@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "palavra"
+version = "0.1.0"
+description = ""
+authors = ["Madson Dias <madsonddias@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+typer = "^0.4.0"
+pydantic = "^1.9.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pre-commit = "^2.17.0"
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+pytest-cov = "^3.0.0"
+mypy = "^0.931"
+python-semantic-release = "^7.25.0"
+black = "^22.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+palavra = 'palavra.cli:app'
+
+[tool.semantic_release]
+version_variable = [
+    'palavra/__init__.py:__version__',
+    "pyproject.toml:version"
+]
+branch = "master"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "poetry build"
+
+[tool.coverage.report]
+omit = ['palavra/__init__.py']
+fail_under = 70
